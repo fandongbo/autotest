@@ -16,5 +16,5 @@
 		value=".//*[@id='dataGrid']/div/div/div/div[2]/div[2]/table"></element>
 	<element id="6" name="选择公司面板-公司列表1" method="xpath"
 		value="//*[@id='dataGrid']/div/div/div/div[2]/div[2]/table/tbody/tr[1]"></element>
-	<element id="1" name="用户信息" method="id" value="user_info"></element>
+	<element id="1" name="用户信息" method="id" value="corp_name"></element>
 </page>
