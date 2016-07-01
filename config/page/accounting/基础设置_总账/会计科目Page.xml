@@ -1,5 +1,5 @@
 <page id="1" name="会计科目设置" url="">
-	<element id="1" name="会计科目iframe" method="name" value="会计科目"></element>
+	<element id="1" name="会计科目iframe" method="xpath" value="//iframe[contains(@src,'gl_cpacckm.jsp')]"></element>
 	<!-- 上方功能按钮 -->
 	<element id="1" name="增加按钮" method="id" value="btn_add"></element>
 	<element id="1" name="修改按钮" method="id" value="btn_modify"></element>
