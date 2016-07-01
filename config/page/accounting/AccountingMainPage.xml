@@ -9,7 +9,7 @@
 	<element id="1" name="用户信息与退出" method="xpath"
 		value="//li[@class='drop_down_block']"></element>
 	<element id="" name="退出按钮" method="xpath"
-		value="//a[@href='/dzfkj/sys/sm_user!logout.action']"></element>
+		value="//a[contains(@href,'sm_user!logout.action')]"></element>
 	<element id="2" name="导航栏" method="id" value="sidebar"></element>
 	<element id="11" name="标题栏全部项" method="xpath"
 		value=".//*[@id='main']/div[1]/div[3]/ul/li"></element>
