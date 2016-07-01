@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<page id="1" name="登录页面" url="http://172.16.2.142:8090/dzfkj/">
+<!-- <page id="1" name="登录页面" url="http://172.16.2.142:8090/dzfkj/"> -->
+<page id="1" name="登录页面" url="http://localhost:9080/DZF_KJ/">
 	<element id="1" name="用户名输入框" method="id" value="user_code"></element>
 	<element id="2" name="密码输入框" method="id" value="user_password"></element>
 	<element id="2" name="验证码输入框" method="id" value="verify"></element>
