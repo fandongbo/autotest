@@ -25,7 +25,7 @@ public class 会计科目Page extends Handler {
 					throws InterruptedException, MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("会计科目");
+			switchToFrame(getWebElement("会计科目iframe"));
 
 			// 选择父资产所在的行 并点击
 			click(getSubjectTr(parentSubjectCode));
@@ -49,7 +49,7 @@ public class 会计科目Page extends Handler {
 		try {
 			switchToDefaultContent();
 
-			switchToFrame("会计科目");
+			switchToFrame(getWebElement("会计科目iframe"));
 
 			click(getSubjectTr(originSubjectCode));
 
@@ -79,7 +79,7 @@ public class 会计科目Page extends Handler {
 
 		switchToDefaultContent();
 
-		switchToFrame("会计科目");
+		switchToFrame(getWebElement("会计科目iframe"));
 
 		click(getSubjectTr(subjectCode));
 
@@ -168,7 +168,7 @@ public class 会计科目Page extends Handler {
 			String 是否外汇核算, /* 币种名称 */String currency) throws InterruptedException, MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("会计科目");
+			switchToFrame(getWebElement("会计科目iframe"));
 
 			if (subjectCode != null && !subjectCode.equals("")) {
 				input("科目修改面板-科目编码输入框", subjectCode);
