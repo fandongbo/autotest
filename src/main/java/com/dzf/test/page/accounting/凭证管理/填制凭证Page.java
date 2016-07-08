@@ -399,6 +399,170 @@ public class 填制凭证Page extends Handler {
 			throw e;
 		}
 	}
+	
+	/*
+	 * 填制并保存凭证不启用库存不启用外币 警告：暂时只支持两行输入
+	 */
+	public boolean saveVoucherNoNumNoCur(String summary1, String subject1, String money1,
+			String summary2, String subject2, String money2, String num, String unitprice, String rate, String original) throws InterruptedException, MyException {
+		try {
+			boolean result = false;
+
+			switchToDefaultContent();
+			switchToFrame(getWebElement("填制凭证iframe"));
+
+			// 点击凭证标题
+			// Reporter.log("点击凭证标题");
+			click("凭证标题");
+
+			// 初始化凭证表格
+			// 列说明：列0：增加/删除行 列1：摘要 列2： 列3：会计科目 列4：会计科目-科目选择 列5：数量 列6：币种 列7：借方金额   列8：贷方金额
+			WebTableUtil table = new WebTableUtil(getWebElement("凭证表格"));
+
+			// 点击第一行摘要输入框
+			// Reporter.log("点击第一行摘要");
+			click(table.getCell(0, 1));
+
+			Thread.sleep(500);
+
+			// 选择下拉框的内容
+			// Reporter.log("第一行摘要输入框输入：" + summary);
+			input(getWebElement(table.getCell(0, 1), By.tagName("input")), summary1);
+
+			// 点击会计科目输入框
+			// Reporter.log("点击第一行会计科目");
+			click(table.getCell(0, 3));
+
+			Thread.sleep(500);
+			
+			// 检查下拉框是否显示
+			if (isDisplayed("会计科目提示框") != true) {
+				click("会计科目第一行");
+			}
+
+			if (subject1 != null) {
+				// Reporter.log("第一行会计科目输入框输入" + subject1);
+				input(getWebElement(table.getCell(0, 3), By.tagName("input")), subject1);
+			}
+			
+			// 选择会计科目
+			// Reporter.log("点击会计科目选项一");
+			click("会计科目选项一");
+
+			// 点击凭证标题
+			click("凭证标题");
+
+			if (isDisplayed(table.getCell(0, 5))) {
+
+				// 输入数量
+				if (num != null) {
+				input(getWebElements(table.getCell(0, 5),
+				By.tagName("input")).get(0), num);
+				}
+				
+				// 输入单价
+				if (unitprice != null) {
+				input(getWebElements(table.getCell(0, 5),
+				By.tagName("input")).get(1), unitprice);
+				}
+			}
+
+			boolean originalInput = false;
+			if (isDisplayed(table.getCell(0, 6))) {
+
+				// 输入汇率
+				if (rate != null) {
+					if (getWebElements(table.getCell(0, 6), By.tagName("input")).get(0).getAttribute("class")
+							.contains("ui-input-disabled") != true) {
+						// Reporter.log("输入汇率" + rate);
+						input(getWebElements(table.getCell(0, 6), By.tagName("input")).get(0), rate);
+					} else {
+						logger.info("汇率已设置！");
+					}
+				}
+
+				// 输入原币
+				if (original != null) {
+					// Reporter.log("输入原币" + original);
+					input(getWebElements(table.getCell(0, 6), By.tagName("input")).get(1), original);
+					originalInput = true;
+				}
+			}
+
+			String moneyTmp = getText(getWebElement(table.getCell(0, 7), By.tagName("div")));
+
+			click(table.getCell(0, 7));
+
+			if (moneyTmp == null || moneyTmp.equals("")) {
+				if (money1 != null) {
+					moneyTmp = money1.toString();
+				} else {
+					moneyTmp = "100";
+				}
+			} else {
+				moneyTmp = String.valueOf(Integer.valueOf(moneyTmp) / 100);
+			}
+
+			// 如果原币没有输入则输入金额，否则不输入
+			if (!originalInput) {
+				// Reporter.log("借方金额输入框输入：" + moneyTmp);
+				input(getWebElement(table.getCell(0, 7), By.tagName("input")), moneyTmp);
+			}
+
+			// 点击第二行的摘要输入框
+			// Reporter.log("点击第二行的摘要");
+			click(table.getCell(1, 1));
+
+			// 点击第二行的会计科目输入框
+			// Reporter.log("点击第二行的会计科目");
+			click(table.getCell(1, 3));
+
+			if (isDisplayed("会计科目提示框") != true) {
+				click(table.getCell(1, 3));
+			}
+
+			if (subject2 != null) {
+				// Reporter.log("第二行的会计科目输入框输入：" + subject2);
+				input(getWebElement(table.getCell(1, 3), By.tagName("input")), subject2);
+			}
+
+			// 选择会计科目
+			// Reporter.log("点击会计科目选项一");
+			click("会计科目选项一");
+
+			// 点击凭证标题
+			click("凭证标题");
+
+			// 点击金额输入框并输入金额
+			// Reporter.log("点击第二行的贷方金额");
+			click(table.getCell(1, 8));
+
+			// Reporter.log("第二行的贷方金额输入框输入：" + moneyTmp);
+			input(getWebElement(table.getCell(1, 8), By.tagName("input")), moneyTmp);
+
+			// 点击保存按钮
+			// Reporter.log("点击保存按钮");
+			click("保存按钮");
+
+			if (isDisplayed("期间损益结转完成提示")) {
+				// Reporter.log("出现期间损益结转完成提示");
+				// Reporter.log("点击期间损益结转完成提示面板-确定按钮");
+				click("期间损益结转完成提示面板-确定按钮");
+			}
+
+			Thread.sleep(500);
+
+			if (isDisplayed("打印按钮")) {
+				result = true;
+			}
+
+			return result;
+		} catch (MyException e) {
+			Reporter.log(e.getMessage());
+			Reporter.log("填制凭证失败！");
+			throw e;
+		}
+	}
 
 	/*
 	 * 常用模板 警告：通过编码选择凭证功能暂未实现
