@@ -77,28 +77,18 @@
 			<version>1.4</version>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.google.inject</groupId> -->
-<!-- 			<artifactId>guice</artifactId> -->
-<!-- 			<version>3.0</version> -->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
 <!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
-
-		
-
-		
-
-		
-
-		
+		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
-		
 
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
 		<dependency>
