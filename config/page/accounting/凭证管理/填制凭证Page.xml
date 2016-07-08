@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page id="1" name="填制凭证" url="">
-	<element id="1" name="填制凭证iframe" method="name" value="填制凭证"></element>
+	<element id="1" name="填制凭证iframe" method="xpath" value="//iframe[contains(@src,'gl_tzpz.jsp')]"></element>
 	<element id="2" name="凭证标题" method="xpath"
 		value="html/body/div[1]/div[2]/div[2]/div[1]/div[2]/h1"></element>
 	<element id="3" name="摘要第一行" method="xpath"
