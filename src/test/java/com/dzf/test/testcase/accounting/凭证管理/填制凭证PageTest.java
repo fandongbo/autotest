@@ -1,8 +1,11 @@
 package com.dzf.test.testcase.accounting.凭证管理;
 
 import static org.testng.Assert.*;
+
+import org.testng.Assert;
 import org.testng.annotations.*;
 
+import com.dzf.test.page.accounting.AccountingLoginPage;
 import com.dzf.test.page.accounting.AccountingMainPage;
 import com.dzf.test.page.accounting.PrintVoucherPage;
 import com.dzf.test.page.accounting.凭证管理.填制凭证Page;
@@ -22,21 +25,35 @@ public class 填制凭证PageTest implements ILogUtil {
 		fillVoucherPage = new 填制凭证Page();
 		printVoucherPage = new PrintVoucherPage();
 	}
+	
+	@BeforeTest
+	@Parameters({ "用户名", "密码", "公司名称" })
+	public void login(String username, String password, String company) throws Exception {
 
-	@Parameters({ "科目名称", "汇率", "原币金额", "本位币金额" })
+		Assert.assertTrue(new AccountingLoginPage().login(username, password, company));
+
+	}
+
+	@AfterTest
+	public void logout() throws InterruptedException, MyException {
+		mainPage.logout();
+	}
+	
+	//@Parameters({ "科目名称", "汇率", "原币金额", "本位币金额" })
+	@Parameters({ "摘要一", "科目一", "金额一", "摘要二", "科目二", "金额二", "数量", "单价", "汇率", "原币" })
 	@Test
-	public void testFillVoucher(String subject, String rate, String original, String money)
+	public void test填制凭证1(String summary1, String subject1, String money1, String summary2, String subject2, String money2, String num, String unitprice, String rate, String original)
 			throws InterruptedException, MyException {
 		// 打开填制凭证
 		mainPage.open填制凭证();
 
-//		boolean result = fillVoucherPage.saveVoucher(subject, rate, original, money);
+		boolean result = fillVoucherPage.saveVoucherNoNumNoCur(summary1, subject1, money1, summary2, subject2, money2, num, unitprice, rate, original);
 
-//		assertTrue(result);
+		assertTrue(result);
 
 	}
 
-	@Test(groups = { "logged-in" })
+	@Test(groups = { "logged-in" }, enabled = false)
 	public void testCommonTemplet() throws InterruptedException, MyException {
 		// 填制凭证
 		mainPage.open填制凭证();
