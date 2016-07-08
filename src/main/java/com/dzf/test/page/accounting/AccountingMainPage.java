@@ -69,7 +69,7 @@ public class AccountingMainPage extends Handler {
 		return result;
 	}
 
-	@Deprecated
+	//@Deprecated
 	public boolean open填制凭证() throws InterruptedException, MyException {
 		boolean result = false;
 

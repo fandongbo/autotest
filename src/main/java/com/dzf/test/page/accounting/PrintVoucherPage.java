@@ -16,7 +16,7 @@ public class PrintVoucherPage extends Handler {
 	public PrintVoucherPage(){
 		super();
 		try {
-			page = XMLUtil.convert("./config/page/accounting/printVoucherPage.xml", Page.class.getName());
+			page = XMLUtil.convert("./config/page/accounting/printPage.xml", Page.class.getName());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
