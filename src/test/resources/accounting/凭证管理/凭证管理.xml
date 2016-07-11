@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="填制凭证测试" preserve-order="false" allow-return-values="true">
+<suite name="凭证管理测试" preserve-order="false" allow-return-values="true">
 	<packages>
 		<package name="com.dzf.test.*"></package>
 	</packages>
