@@ -41,7 +41,7 @@ public class 填制凭证Page extends Handler {
 	public void editVoucher(Voucher voucher) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("填制凭证");
+			switchToFrame(getWebElement("填制凭证iframe"));
 
 			// 点击凭证标题
 			// Reporter.log("点击凭证标题");
@@ -213,7 +213,7 @@ public class 填制凭证Page extends Handler {
 			boolean result = false;
 
 			switchToDefaultContent();
-			switchToFrame("填制凭证");
+			switchToFrame(getWebElement("填制凭证iframe"));
 
 			editVoucher(voucher);
 
@@ -244,7 +244,7 @@ public class 填制凭证Page extends Handler {
 			boolean result = false;
 
 			switchToDefaultContent();
-			switchToFrame("填制凭证");
+			switchToFrame(getWebElement("填制凭证iframe"));
 
 			// 点击凭证标题
 			// Reporter.log("点击凭证标题");
@@ -840,7 +840,7 @@ public class 填制凭证Page extends Handler {
 	public void 转总账(String useDate) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("填制凭证");
+			switchToFrame(getWebElement("填制凭证iframe"));
 
 			// 修改日期使用日期
 			input("日期输入框", useDate);
