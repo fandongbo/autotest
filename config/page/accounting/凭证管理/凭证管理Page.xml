@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page id="1" name="登录页面" url="">
-	<element id="1" name="凭证管理iframe" method="name" value="凭证管理"></element>
+	<element id="1" name="凭证管理iframe" method="xpath" value="//iframe[contains(@src,'gl_pzgl.jsp')]"></element>
 	<element id="1" name="全部凭证复选框" method="xpath"
 		value=".//*[@id='pzGridD']/div/div/div[1]/div[2]/div[1]/div/table/tbody/tr/td[1]/div/input"></element>
 	<element id="1" name="审核按钮" method="xpath" value="//a[@onclick='audit()']"></element>
