@@ -473,6 +473,7 @@ public class Handler extends WebDriverModel implements IHandler, ILogUtil {
 		try {
 			Actions action = new Actions(driver);
 			action.moveToElement(getWebElement(elementName)).perform();
+			Reporter.log("鼠标移动到：" + elementName);
 		} catch (WebDriverException e) {
 			Reporter.log("鼠标移动到：" + elementName + "失败");
 			throw new MyException("鼠标移动到：" + elementName + "失败！", e);
@@ -506,6 +507,7 @@ public class Handler extends WebDriverModel implements IHandler, ILogUtil {
 	public void switchToFrame(WebElement frameElement) throws MyException {
 		try {
 			driver.switchTo().frame(frameElement);
+			Reporter.log("切换到frame：" + frameElement);
 		} catch (WebDriverException e) {
 			Reporter.log("切换到frame：" + frameElement + "失败！");
 			throw new MyException("切换到frame：" + frameElement + "失败！", e);
