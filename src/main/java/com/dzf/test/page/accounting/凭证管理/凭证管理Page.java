@@ -115,8 +115,10 @@ public class 凭证管理Page extends Handler {
 		try {
 			switchToDefaultContent();
 			switchToFrame(getWebElement("凭证管理iframe"));
+			mouseMoveTo("查询按钮");
 
-			if (byDateOrPeriod != null && byDateOrPeriod != "") {
+			Reporter.log("输入查询条件");
+			if (byDateOrPeriod != null && !"".equals(byDateOrPeriod)) {
 				switch (byDateOrPeriod) {
 				case "日期":
 					searchVoucherByDate(beginDate, endDate);
@@ -129,11 +131,13 @@ public class 凭证管理Page extends Handler {
 				}
 			}
 
-			input("查询面板-开始凭证号输入框", beginCode);
-
-			input("查询面板-结束凭证号输入框", endCode);
-
-			if (status != null && status != "") {
+			if(beginCode != null && !"".equals(beginCode)){
+				input("查询面板-开始凭证号输入框", beginCode);
+			}
+			if(endCode != null && !"".equals(endCode)){
+				input("查询面板-结束凭证号输入框", endCode);
+			}
+			if (status != null && !"".equals(status)) {
 				switch (status) {
 				case "未审核":
 					click("查询面板-状态选择按钮");
@@ -148,23 +152,26 @@ public class 凭证管理Page extends Handler {
 					break;
 				}
 			}
-
-			input("查询面板-科目输入框", subject);
-
-			input("查询面板-摘要输入框", digest);
-
-			input("查询面板-最小金额输入框", minMoney);
-
-			input("查询面板-最大金额输入框", maxMoney);
-
+			if(subject != null && !"".equals(subject)){
+				input("查询面板-科目输入框", subject);
+			}
+			if(digest != null && !"".equals(digest)){
+				input("查询面板-摘要输入框", digest);
+			}
+			if(minMoney != null && !"".equals(minMoney)){
+				input("查询面板-最小金额输入框", minMoney);
+			}
+			if(maxMoney != null && !"".equals(maxMoney)){
+				input("查询面板-最大金额输入框", maxMoney);
+			}
 			if (company != null) {
 				// 暂不实现
 				// click("查询面板-公司选择按钮");
 			}
 
 			click("查询面板-确定按钮");
-
-			return false;
+			Reporter.log("查找成功");
+			return true;
 		} catch (MyException e) {
 			Reporter.log(e.getMessage());
 			Reporter.log("查找失败");
