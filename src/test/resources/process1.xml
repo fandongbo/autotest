@@ -227,10 +227,11 @@
 		</classes>
 	</test>
 
+	<!-- 修改会计科目，启用数量核算 -->
 	<test name="scenery3" enabled="true" preserve-order="true">
-		<parameter name="用户名" value="xmgs001"></parameter>
-		<parameter name="密码" value="qwe123!@#"></parameter>
-		<parameter name="公司名称" value="测试小企业07"></parameter> 
+		<parameter name="用户名" value="dxm2525"></parameter>
+		<parameter name="密码" value="123qwe!@#"></parameter>
+		<parameter name="公司名称" value="张三8321"></parameter> 
 <!-- 		<parameter name="公司名称" value="13小企业商贸启用库存"></parameter>  -->
 		<classes>
 			<class name="com.dzf.test.testcase.SuiteConfig"></class>
@@ -356,14 +357,14 @@
 	</test>
 
 	<listeners>
-		<!-- reportNg Listener -->
-		<!-- <listener class-name="org.uncommons.reportng.HTMLReporter" /> -->
-		<!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter" /> -->
-		<!-- arrow Listener -->
-		<!-- <listener class-name="com.netease.qa.testng.TestResultListener" /> -->
-		<!-- <listener class-name="com.netease.qa.testng.RetryListener" /> -->
-		<!-- <listener class-name="com.netease.qa.testng.PowerEmailableReporter" 
-			/> -->
+<!-- 		reportNg Listener -->
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+<!-- 		arrow Listener -->
+		<listener class-name="com.netease.qa.testng.TestResultListener" />
+		<listener class-name="com.netease.qa.testng.RetryListener" />
+		<listener class-name="com.netease.qa.testng.PowerEmailableReporter" 
+			/>
 		<!-- self Listener -->
 		<listener class-name="com.dzf.test.util.testng.ScreenShotListener" />
 	</listeners>
