@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page id="1" name="图片浏览" url="">
+	<element id="1" name="图片浏览iframe" method="xpath" value="//iframe[contains(@src,'gl_tpll.jsp')]"></element>
+	<element id="" name="查询按钮" method="id" value="search"></element>
+	<element id="" name="公司" method="xpath" value=".//*[@id='contid1']/div[1]/div/font/font/span/input[1]"></element>
+	<element id="" name="状态选择按钮" method="xpath" value=".//*[@id='contid1']/div[2]/div/font/span/span/a"></element>
+	<element id="" name="状态全部" method="id" value="_easyui_combobox_i1_0"></element>
+	<element id="" name="状态未处理" method="id" value="_easyui_combobox_i1_1"></element>
+	<element id="" name="状态处理中" method="id" value="_easyui_combobox_i1_2"></element>
+	<element id="" name="状态已退回" method="id" value="_easyui_combobox_i1_3"></element>
+	<element id="" name="状态已制证" method="id" value="_easyui_combobox_i1_4"></element>
+	<element id="" name="开始日期" method="xpath" value=".//*[@id='contid1']/div[3]/div/font[1]/span/input[1]"></element>
+	<element id="" name="结束日期" method="xpath" value=".//*[@id='contid1']/div[3]/div/font[3]/span/input[1]"></element>
+	<element id="" name="开始图片组" method="xpath" value=".//*[@id='contid1']/div[4]/div/font[1]/span/input[1]"></element>
+	<element id="" name="结束图片组" method="xpath" value=".//*[@id='contid1']/div[4]/div/font[3]/span/input[1]"></element>
+	<element id="" name="查询面板确定按钮" method="xpath" value="//a[@onclick='reloadData()']"></element>
+	<element id="" name="结束日期托盘按钮" method="xpath" value=".//*[@id='contid1']/div[3]/div/font[3]/span/span/a"></element>
+	<element id="" name="" method="" value=""></element>
+</page>
