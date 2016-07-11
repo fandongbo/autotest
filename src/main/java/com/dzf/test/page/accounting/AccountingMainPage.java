@@ -97,7 +97,7 @@ public class AccountingMainPage extends Handler {
 		return result;
 	}
 
-	@Deprecated
+	//@Deprecated
 	public boolean open凭证管理() throws InterruptedException, MyException {
 		boolean result = false;
 
