@@ -122,6 +122,31 @@ public class AccountingMainPage extends Handler {
 		return result;
 
 	}
+	
+	public boolean open图片浏览() throws InterruptedException, MyException {
+		boolean result = false;
+
+		try {
+			switchToDefaultContent();
+
+			closeLable("图片浏览");
+
+			mouseMoveTo("凭证管理");
+
+			click("图片浏览悬浮");
+
+			mouseMoveTo("logo");
+
+			Thread.sleep(3000);
+
+			result = LableisOpened("图片浏览");
+
+		} catch (WebDriverException e) {
+			throw e;
+		}
+		return result;
+
+	}
 
 	@Deprecated
 	public boolean open科目期初余额() throws InterruptedException, MyException {
