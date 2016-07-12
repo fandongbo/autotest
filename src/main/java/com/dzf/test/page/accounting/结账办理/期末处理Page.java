@@ -1,5 +1,7 @@
 package com.dzf.test.page.accounting.结账办理;
 
+import static org.testng.Assert.assertTrue;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -9,6 +11,7 @@ import org.testng.Reporter;
 import com.dzf.test.model.Handler;
 import com.dzf.test.model.Page;
 import com.dzf.test.util.MyException;
+import com.dzf.test.util.WebTableUtil;
 import com.dzf.test.util.XMLUtil;
 
 public class 期末处理Page extends Handler {
@@ -30,7 +33,7 @@ public class 期末处理Page extends Handler {
 			throws MyException {
 		// 切换到期末处理iframe
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		mouseMoveTo("查询按钮");
 
@@ -103,10 +106,32 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean 成本结转() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
-
+		switchToFrame(getWebElement("期末处理iframe"));
+		
+		WebElement table = getWebElement(By.xpath(".//*[@id='dataGrid']/div/div/div/div[2]/div[2]/table"));// /tbody/tr/td[6]/div/input
+		
+		WebTableUtil tableUtil = new WebTableUtil(table);
+		
+		//System.out.println(tableUtil.getRowCount());
+		
+		for (int i = 0; i < tableUtil.getRowCount(); i++) {
+			
+			String value = tableUtil.getCell(i, 3).findElement(By.tagName("input")).getAttribute("value");
+			
+			logger.info(i+":"+tableUtil.getCell(i, 1).getText()+":"+value);
+			
+			if("是".equals(value) == true){
+				continue;
+			}else{
+				click(tableUtil.getCell(i, 3).findElement(By.tagName("input")));
+				break;
+			}
+		}
+		
 		click("成本结转按钮");
-
+		if(isDisplayed("操作提示")){
+			Reporter.log("操作失败，提示：" + getText("操作提示"));
+		}
 		Thread.sleep(5000);
 		return false;
 	}
@@ -116,7 +141,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean 反成本结转() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		click("反成本结转按钮");
 		Thread.sleep(5000);
@@ -128,7 +153,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean 计提折旧() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		click("计提折旧按钮");
 		Thread.sleep(5000);
@@ -140,7 +165,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean 反计提折旧() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		click("反计提折旧按钮");
 		Thread.sleep(5000);
@@ -149,7 +174,7 @@ public class 期末处理Page extends Handler {
 
 	public void 期间损益结转() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		Thread.sleep(1000);
 
@@ -167,7 +192,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public void 反期间损益结转() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		Thread.sleep(1000);
 
@@ -182,7 +207,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean 汇兑损益调整() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		click("汇兑损益调整按钮");
 
@@ -191,7 +216,7 @@ public class 期末处理Page extends Handler {
 
 	public boolean 取消汇兑调整() throws InterruptedException, MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		if (!isDisplayed("汇兑调整面板-取消按钮")) {
 			return false;
@@ -209,7 +234,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean refresh() throws MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		click("刷新按钮");
 
@@ -221,7 +246,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean selectAll() throws MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		if (isSelected("全选复选框")) {
 			return true;
@@ -237,7 +262,7 @@ public class 期末处理Page extends Handler {
 	 */
 	public boolean deSelectAll() throws MyException {
 		switchToDefaultContent();
-		switchToFrame("期末处理");
+		switchToFrame(getWebElement("期末处理iframe"));
 
 		if (isSelected("全选复选框")) {
 			click("全选复选框");
@@ -257,7 +282,7 @@ public class 期末处理Page extends Handler {
 	public boolean selectPeriod(String period) throws InterruptedException, MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("期末处理");
+			switchToFrame(getWebElement("期末处理iframe"));
 
 			// WebTableUtil table = new
 			// WebTableUtil(getWebElement("期间列表table"));
