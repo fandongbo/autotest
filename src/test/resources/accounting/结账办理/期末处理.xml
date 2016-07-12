@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="期末处理测试" preserve-order="false" allow-return-values="true">
+	<packages>
+		<package name="com.dzf.test.*"></package>
+	</packages>
+	<test name="期末处理" enabled="true" preserve-order="true">
+		<parameter name="用户名" value="dxm2525"></parameter>
+		<parameter name="密码" value="123qwe!@#"></parameter>
+		<parameter name="公司名称" value="张三8321"></parameter>
+
+		<classes>
+			<class name="com.dzf.test.testcase.SuiteConfig"></class>
+			<class name="com.dzf.test.testcase.accounting.结账办理.期末处理PageTest">
+				<methods>
+					<include name="login"></include>
+					<include name="search">
+						<parameter name="公司" value=""></parameter>
+						<parameter name="开始时间" value="2016-04-01"></parameter>
+						<parameter name="结束时间" value="2016-04-31"></parameter>
+						<parameter name="仅显示未结转" value="false"></parameter>
+						<parameter name="仅显示已结转" value="false"></parameter>
+					</include>
+					<include name="testChengBenJieZhuan"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<listeners>
+<!-- 		reportNg Listener -->
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+<!-- 		arrow Listener -->
+		<listener class-name="com.netease.qa.testng.TestResultListener" />
+		<listener class-name="com.netease.qa.testng.RetryListener" />
+		<listener class-name="com.netease.qa.testng.PowerEmailableReporter" 
+			/>
+		<!-- self Listener -->
+		<listener class-name="com.dzf.test.util.testng.ScreenShotListener" />
+	</listeners>
+</suite>
