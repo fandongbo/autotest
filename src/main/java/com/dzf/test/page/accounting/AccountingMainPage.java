@@ -186,7 +186,7 @@ public class AccountingMainPage extends Handler {
 
 	}
 
-	@Deprecated
+	//@Deprecated
 	public boolean open期末处理() throws InterruptedException, MyException {
 
 		boolean result = false;
