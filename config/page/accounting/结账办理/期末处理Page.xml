@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page id="1" name="登录页面" url="">
-	<element id="1" name="期末处理iframe" method="name" value="期末处理"></element>
+	<element id="1" name="期末处理iframe" method="xpath" value="//iframe[contains(@src,'gl_qmcl.jsp')]"></element>
 	<element id="1" name="查询按钮" method="id" value="typeid1"></element>
 	<element id="1" name="开始年份选择按钮" method="xpath"
 		value=".//*[@id='contid1']/div[2]/div/font[1]/span/span/a"></element>
