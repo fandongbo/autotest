@@ -33,9 +33,9 @@ public class 卡片管理Page extends Handler {
 			String isbeginofperiod, String isclean, String convertedLedger) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
-			click("查询按钮");
+			mouseMoveTo("查询按钮");
 
 			click("查询面板-起始使用日期选择按钮");
 			new DatePickerUtil(getWebElement("查询面板-起始使用日期时间选择器")).choseDate(beginDate);
@@ -89,7 +89,7 @@ public class 卡片管理Page extends Handler {
 			// depreciationSubject, depreciationCostSubject, originalValue);
 
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			click("列表显示-增加按钮");
 			// 输入录入期间：默认当天
@@ -203,7 +203,7 @@ public class 卡片管理Page extends Handler {
 	public boolean existAssetCode(String assetCode) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			return getWebElements(By.xpath("//td[@field='zcbm']/div[text()='" + assetCode + "']")).size() > 0;
 
@@ -227,7 +227,7 @@ public class 卡片管理Page extends Handler {
 	public void refresh() throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			click("刷新按钮卡片显示");
 
@@ -255,7 +255,7 @@ public class 卡片管理Page extends Handler {
 	public boolean assetCleanOnCardShow() throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			if (getWebElement(By.name("clear")).equals("是")) {
 				Reporter.log("资产已清理！清理失败！");
@@ -286,7 +286,7 @@ public class 卡片管理Page extends Handler {
 	public boolean convertLedgerOnCardShow() throws MyException, InterruptedException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			// 获取使用日期
 			String useDate = getWebElement("开始使用日期输入框").getAttribute("value");
@@ -298,7 +298,7 @@ public class 卡片管理Page extends Handler {
 			new 填制凭证Page().转总账(useDate);
 
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			return getWebElement("状态信息-转总账输入框").getAttribute("value").equals("是");
 
@@ -312,7 +312,7 @@ public class 卡片管理Page extends Handler {
 	public boolean convertLedgerOnListShow(String cardCode) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			return false;
 		} catch (MyException e) {
@@ -406,7 +406,7 @@ public class 卡片管理Page extends Handler {
 	public String getCardAttr(String cardIdOrAssetNumber, String attrName) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			String field = "";
 
@@ -522,7 +522,7 @@ public class 卡片管理Page extends Handler {
 	public String getCardCode() throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 
 			return getWebElement("卡片编号").getAttribute("value");
 		} catch (MyException e) {
@@ -535,7 +535,7 @@ public class 卡片管理Page extends Handler {
 	public String getAssetCode() throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("卡片管理");
+			switchToFrame(getWebElement("卡片管理iframe"));
 			// zcbm
 			return getWebElement(By.name("zcbm")).getAttribute("value");
 		} catch (MyException e) {
