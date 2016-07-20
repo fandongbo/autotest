@@ -127,10 +127,14 @@
 	<element id="" name="模版名称输入框" method="xpath"
 		value=".//*[@id='newTemplate']/p[2]/span/input[1]"></element>
 	<element id="" name="新增模版面板-保存按钮" method="id" value="addNewTemp"></element>
+	<!-- <element id="" name="期间损益结转完成提示" method="xpath"
+		value="//div[contains(.,'期间损益结转已完成，是否继续？？')]"></element> -->
 	<element id="" name="期间损益结转完成提示" method="xpath"
-		value="//div[contains(.,'期间损益结转已完成，是否继续？？')]"></element>
+		value="html/body/div[40]/div[2]"></element>
+	<!-- <element id="" name="期间损益结转完成提示面板-确定按钮" method="xpath"
+		value="//div[contains(.,'期间损益结转已完成，是否继续？？')]/div/a[contains(span,'确定')]"></element> -->
 	<element id="" name="期间损益结转完成提示面板-确定按钮" method="xpath"
-		value="//div[contains(.,'期间损益结转已完成，是否继续？？')]/div/a[contains(span,'确定')]"></element>
+		value="html/body/div[40]/div[2]/div[4]/a[1]"></element>
 	<element id="" name="反审核按钮" method="id" value="revAudit"></element>
 	<element id="" name="日期输入框" method="id" value="vch_date"></element>
 	<element id="" name="科目属性" method="id" value="isItem"></element>

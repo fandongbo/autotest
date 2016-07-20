@@ -58,7 +58,7 @@
 	<element id="1" name="刷新按钮" method="xpath" value="//a[@onclick='refresh()']"></element>
 	<element id="1" name="打印按钮" method="xpath" value="//a[@onclick='print()']"></element>
 	<element id="1" name="打印面板-打印按钮" method="xpath"
-		value=".//*[@id='print_buttons']/a[1]"></element>
+		value=".//*[@id='print_buttons']/a[@onclick='doPrint()']"></element>
 	<element id="1" name="导出按钮" method="xpath"
 		value="//a[@onclick='excelReport()']"></element>
 	<element id="1" name="全选复选框" method="xpath" value=".//*[@id='pzGridD']/div/div/div[1]/div[2]/div[1]/div/table/tbody/tr/td[1]/div/input"></element>
