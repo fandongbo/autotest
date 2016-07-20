@@ -183,7 +183,7 @@ public class 凭证管理Page extends Handler {
 		switchToDefaultContent();
 		switchToFrame(getWebElement("凭证管理iframe"));
 
-		click("查询按钮");
+		mouseMoveTo("查询按钮");
 
 		click("凭证查询-期间");
 
