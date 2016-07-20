@@ -1,5 +1,7 @@
 package com.dzf.test.testscenery;
 
+import static org.testng.Assert.assertTrue;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -122,23 +124,20 @@ public class TestScenery1 {
 
 	}
 
+	@Parameters({ "摘要一", "科目一", "金额一", "摘要二", "科目二", "金额二", "数量", "单价", "汇率", "原币" })
 	@Test(dependsOnMethods = "test期初试算平衡", priority = 3)
-	@Parameters({ "摘要", "科目一", "金额", "科目二" })
-	public void test填制凭证(String summary, String subject1, String num, String subject2)
+	public void test填制凭证(String summary1, String subject1, String money1, String summary2, String subject2, String money2, String num, String unitprice, String rate, String original)
 			throws InterruptedException, MyException {
-		try {
-			mainPage.openFrame("填制凭证");
-			填制凭证.saveVoucher(summary, subject1, null, null, num, subject2);
+		// 打开填制凭证
+		mainPage.open填制凭证();
 
-		} catch (MyException e) {
-			Reporter.log(e.getMessage());
-			Reporter.log("填制凭证失败！");
-			throw e;
-		}
+		boolean result = 填制凭证.saveVoucherNoNumNoCur(summary1, subject1, money1, summary2, subject2, money2, num, unitprice, rate, original);
+
+		assertTrue(result);
 
 	}
 
-	@Test(priority = 4)
+	/*@Test(priority = 4)
 	@Parameters({ "摘要", "科目一", "金额", "科目二", "原始日期", "目标日期" })
 	public void test填制凭证其它功能(String summary, String subject1, String num, String subject2, String originalDate,
 			String targetDate) throws InterruptedException, MyException {
@@ -178,47 +177,18 @@ public class TestScenery1 {
 			throw e;
 		}
 
-	}
+	}*/
 
+	
+	@Parameters({"查询方式","开始年月","结束年月","开始凭证号","结束凭证号","状态","科目","摘要","最小金额","最大金额","公司"})
 	@Test( dependsOnMethods = "test填制凭证", priority = 5)
-	@Parameters({ "查询方式", "开始日期", "结束日期" })
-	public void test凭证管理(String byDateOrPeriod, String beginDate, String endDate)
-			throws InterruptedException, MyException {
-		try {
-			mainPage.openFrame("凭证管理");
-
-			凭证管理.refresh();
-
-			凭证管理.searchVoucher(byDateOrPeriod, beginDate, endDate, null, null, null, null, null, null, null, null);
-
-			凭证管理.selectAll();
-
-			凭证管理.auditVoucher();
-
-			凭证管理.accountVoucher();
-
-			凭证管理.unAccountVoucher();
-
-			凭证管理.unAuditVoucher();
-
-			凭证管理.print();
-
-			// 凭证管理.export();
-
-			凭证管理.deSelectAll();
-
-			凭证管理.selectAll();
-
-			凭证管理.auditVoucher();
-
-			凭证管理.accountVoucher();
-
-		} catch (MyException e) {
-			Reporter.log(e.getMessage());
-			Reporter.log("凭证管理操作失败！");
-			throw e;
-		}
-
+	public void test凭证管理(String byDateOrPeriod, String beginDate, String endDate, String beginCode,
+			String endCode, String status, String subject, String digest, String minMoney, String maxMoney,
+			String company) throws InterruptedException, MyException{
+		mainPage.open凭证管理();
+		boolean result = 凭证管理.searchVoucher(byDateOrPeriod,beginDate,endDate,beginCode,endCode,status,subject,digest,minMoney,maxMoney,company);
+		assertTrue(result);
+		Thread.sleep(3000);
 	}
 
 	@Test( dependsOnMethods = "test凭证管理", priority = 6)

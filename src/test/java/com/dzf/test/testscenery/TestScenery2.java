@@ -237,7 +237,7 @@ public class TestScenery2 implements ILogUtil {
 
 	}
 
-	@Test( dependsOnMethods = { "test期初试算平衡" } ,priority = 5)
+	@Test( /*dependsOnMethods = { "test期初试算平衡" } ,*/priority = 5)
 	@Parameters({ "摘要", "科目一", "汇率", "原币", "金额", "科目二" })
 	public void test填制凭证(String summary, String subject1, String rate, String original, String num, String subject2)
 			throws InterruptedException, MyException {
@@ -394,6 +394,8 @@ public class TestScenery2 implements ILogUtil {
 			凭证管理.selectAll();
 
 			凭证管理.auditVoucher();
+			
+			凭证管理.selectAll();
 
 			凭证管理.accountVoucher();
 
