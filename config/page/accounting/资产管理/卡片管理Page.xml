@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page id="1" name="卡片管理" url="">
+	<element id="1" name="卡片管理iframe" method="xpath" value="//iframe[contains(@src,'am_kpgl.jsp')]"></element>
 	<element id="1" name="卡片编号" method="name" value="ascode"></element>
 	<element id="1" name="录入期间选择按钮" method="xpath" value="//input[@name='dperiod']/../span/a"></element>
 	<element id="1" name="录入期间时间选择器" method="xpath" value="(//div[@class='calendar-header']/../../../..)[3]"></element>

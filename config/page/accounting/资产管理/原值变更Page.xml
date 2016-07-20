@@ -2,6 +2,7 @@
 <!-- <!DOCTYPE page PUBLIC "pageElementLocator" "file:///E:/git/UITest/config/pageElementLocator.dtd"> -->
 <page id="1" name="原值变更" url="">
 	<!-- 功能按钮 -->
+	<element id="" name="原值变更iframe" method="xpath" value="//iframe[contains(@src,'am_yzbg.jsp')]"></element>
 	<element id="" name="查询按钮" method="id" value="jqj"></element>
 	<element id="" name="增加按钮" method="xpath" value="//a[@onclick='add()']"></element>
 	<element id="" name="刷新按钮" method="xpath" value="//a[@onclick='onRefresh()']"></element>
