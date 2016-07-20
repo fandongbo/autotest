@@ -104,32 +104,38 @@ public class 科目期初余额Page extends Handler {
 	 */
 	public WebElement getSubjectTr(String subject) throws InterruptedException, MyException {
 
-		String tableList[] = { "资产table", "负债table", "共同table", "所有者权益table", "成本table", "损益table" };
-		for (String table : tableList) {
-
-			switch (table) {
-			case "资产table":
-				// Reporter.log("点击资产");
+		//String tableList[] = { "资产table", "负债table", "共同table", "所有者权益table", "成本table", "损益table" };
+		//for (String table : tableList) {
+		String table = null;
+		String firstLetter = subject.substring(0,1);
+			switch (firstLetter) {
+			case "1":
+				table = "资产table";
+				Reporter.log("点击资产");
 				click("资产类别");
 				break;
-			case "负债table":
-				// Reporter.log("点击负债");
+			case "2":
+				table = "负债table";
+				Reporter.log("点击负债");
 				click("负债类别");
 				break;
-			case "共同table":
-				// Reporter.log("点击共同");
+			/*case "共同table":
+				Reporter.log("点击共同");
 				click("共同类别");
-				break;
-			case "所有者权益table":
-				// Reporter.log("点击所有者权益");
+				break;*/
+			case "3":
+				table = "所有者权益table";
+				Reporter.log("点击所有者权益");
 				click("所有者权益类别");
 				break;
-			case "成本table":
-				// Reporter.log("点击成本");
+			case "4":
+				table = "成本table";
+				Reporter.log("点击成本");
 				click("成本类别");
 				break;
-			case "损益table":
-				// Reporter.log("点击损益");
+			case "5":
+				table = "损益table";
+				Reporter.log("点击损益");
 				click("损益类别");
 				break;
 			}
@@ -138,8 +144,7 @@ public class 科目期初余额Page extends Handler {
 
 			// Reporter.log("获取所有包含" + subject + "的行");
 			// 获取table中所有的包含subject的tr
-			List<WebElement> el = getWebElement(table).findElements(By.xpath(".//tr[*='" + subject + "']"));
-
+			List<WebElement> el = getWebElement(table).findElements(By.xpath("//td[@field='kminfo']//div/span[@class='tree-title' and text()='"+subject+"']"));
 			if (0 != el.size()) {
 				return el.get(0);
 			}
@@ -151,8 +156,6 @@ public class 科目期初余额Page extends Handler {
 			// return webElement;
 			// }
 			// }
-		}
-
 		return null;
 	}
 
