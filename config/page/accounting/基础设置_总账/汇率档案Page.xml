@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page id="1" name="汇率档案" url="">
-	<element id="1" name="汇率档案iframe" method="name" value="汇率档案"></element>
+	<element id="1" name="汇率档案iframe" method="xpath" value="//iframe[contains(@src,'gl_bdhl.jsp')]"></element>
 	<element id="1" name="汇率档案表格" method="xpath"
 		value=".//*[@id='dataGrid']/div/div/div[1]/div[2]/div[2]/table"></element>
 	<element id="1" name="增加按钮" method="xpath" value="//a[@onclick='addFun()']"></element>

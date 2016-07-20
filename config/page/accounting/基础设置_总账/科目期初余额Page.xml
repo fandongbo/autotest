@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page id="1" name="科目期初余额" url="">
-	<element id="1" name="科目期初余额iframe" method="name" value="期初开账-科目期初余额"></element>
+	<element id="1" name="科目期初余额iframe" method="xpath" value="//iframe[contains(@src,'gl_qcye.jsp')]"></element>
 	<element id="1" name="资产类别" method="xpath"
 		value=".//*[@id='km_tabs']/div[1]/div[3]/ul/li[1]/a"></element>
 	<element id="1" name="负债类别" method="xpath"
