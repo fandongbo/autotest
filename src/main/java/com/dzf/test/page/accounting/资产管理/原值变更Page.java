@@ -67,9 +67,9 @@ public class 原值变更Page extends Handler {
 	public boolean search(String beginDate, String endDate, String assetsName, int CardNum) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("原值变更");
+			switchToFrame(getWebElement("原值变更iframe"));
 
-			click("查询按钮");
+			mouseMoveTo("查询按钮");
 
 			if (beginDate != null && !beginDate.equals("")) {
 				click("查询面板-开始日期选择按钮");
@@ -107,7 +107,7 @@ public class 原值变更Page extends Handler {
 	public boolean add(String cardNameOrNum, String changeDate, String newOriginalValue) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("原值变更");
+			switchToFrame(getWebElement("原值变更iframe"));
 
 			// 获取当前变更记录列表数
 			int oriCount = new WebTableUtil(getWebElement("变更记录列表数table")).getRowCount();
@@ -148,7 +148,7 @@ public class 原值变更Page extends Handler {
 	public boolean delete(String cardID, int index) throws MyException {
 		try {
 			switchToDefaultContent();
-			switchToFrame("原值变更");
+			switchToFrame(getWebElement("原值变更iframe"));
 
 			int oriCount = new WebTableUtil(getWebElement("变更记录列表数table")).getRowCount();
 
@@ -180,7 +180,7 @@ public class 原值变更Page extends Handler {
 
 		try {
 			switchToDefaultContent();
-			switchToFrame("原值变更");
+			switchToFrame(getWebElement("原值变更iframe"));
 
 			click("刷新按钮");
 
@@ -198,7 +198,7 @@ public class 原值变更Page extends Handler {
 	public boolean convertLedger(String cardID, int index) throws Exception {
 		try {
 			switchToDefaultContent();
-			switchToFrame("原值变更");
+			switchToFrame(getWebElement("原值变更iframe"));
 
 			click(new WebTableUtil(getWebElement("变更记录列表table")).getTr(index, cardID));
 
@@ -219,9 +219,13 @@ public class 原值变更Page extends Handler {
 
 			Voucher voucher = new Voucher("原值变更转总账,资产卡片" + cardID);
 
-			VoucherSubject s1 = voucher.new VoucherSubject("固定资产/" + assetSubject, null, "-2", false, null, null, null,
+			/*VoucherSubject s1 = voucher.new VoucherSubject("固定资产/" + assetSubject, null, "-2", false, null, null, null,
+					false, null, null, null);*/
+			VoucherSubject s1 = voucher.new VoucherSubject("160106", null, "-2", false, null, null, null,
 					false, null, null, null);
-			VoucherSubject s2 = voucher.new VoucherSubject("库存现金", null, "-2", false, null, null, null, false, null,
+			/*VoucherSubject s2 = voucher.new VoucherSubject("库存现金", null, "-2", false, null, null, null, false, null,
+					null, null);*/
+			VoucherSubject s2 = voucher.new VoucherSubject("100201010102", null, "-2", false, null, null, null, false, null,
 					null, null);
 
 			List<VoucherSubject> subjectList = new ArrayList<VoucherSubject>();
@@ -235,10 +239,10 @@ public class 原值变更Page extends Handler {
 
 			mainPage.switchToLable("原值变更");
 
-			switchToFrame("原值变更");
+			switchToFrame(getWebElement("原值变更iframe"));
 
 			return new WebTableUtil(getWebElement("变更记录列表table")).getTr(cardID)
-					.findElement(By.xpath("./td[@field='togl']//input")).getAttribute("checked").equals("true");
+					.findElement(By.xpath("//td[@field='togl']//div/input")).getAttribute("checked").equals("true");
 		} catch (MyException e) {
 			Reporter.log(e.getMessage());
 			Reporter.log("转总账失败！");
@@ -250,7 +254,7 @@ public class 原值变更Page extends Handler {
 
 		try {
 			switchToDefaultContent();
-			switchToFrame("原值变更");
+			switchToFrame(getWebElement("原值变更iframe"));
 
 			WebElement target = new WebTableUtil(getWebElement("变更记录列表table")).getTr(index, cardID);
 			
