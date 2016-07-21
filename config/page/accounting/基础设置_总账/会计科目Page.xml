@@ -13,23 +13,32 @@
 	<element id="1" name="外汇核算币种选择面板-确定按钮" method="xpath" value="//div[@id='whhsRefDlg']/following-sibling::div/a[*='确认']"></element>
 	
 	<!-- 修改面板 -->
-	<element id="1" name="科目修改面板-外汇核算币种输入框" method="xpath" value="//input[@name='whhsmc']"></element>
 	<element id="1" name="科目修改面板-科目编码输入框" method="xpath" value="//input[@name='kmbm']/preceding-sibling::input"></element>
 	<element id="1" name="科目修改面板-科目名称输入框" method="xpath" value="//input[@name='kmmc']/preceding-sibling::input"></element>
-	<element id="1" name="修改科目面板-是否数量核算复选框" method="id" value="sfsz"></element>
-	<element id="1" name="修改科目面板-是否数量核算输入框" method="xpath" value="//input[following-sibling::input[@name='sfsz']]"></element>
-	<element id="1" name="修改科目面板-计量单位输入框" method="xpath" value=""></element>
-	<element id="1" name="是修改科目面板-否数量核算标签" method="xpath" value=".//th[text()='是否数量核算']"></element>
+	<element id="1" name="科目修改面板-是否辅助核算复选框" method="id" value="isfzhs"></element>
+	<element id="1" name="科目修改面板-辅助核算项" method="id" value="th_fzhsxx"></element>
+	<element id="1" name="科目修改面板-辅助核算项-客户" method="xpath" value="//div[@id='div_fzhsxx1']/span[1]/input"></element>
+	<element id="1" name="科目修改面板-辅助核算项-供应商" method="xpath" value="//div[@id='div_fzhsxx1']/span[2]/input"></element>
+	<element id="1" name="科目修改面板-辅助核算项-职员" method="xpath" value="//div[@id='div_fzhsxx1']/span[3]/input"></element>
+	<element id="1" name="科目修改面板-辅助核算项-项目" method="xpath" value="//div[@id='div_fzhsxx1']/span[4]/input"></element>
+	<element id="1" name="科目修改面板-辅助核算项-部门" method="xpath" value="//div[@id='div_fzhsxx1']/span[5]/input"></element>
+	<element id="1" name="科目修改面板-辅助核算项-存货" method="xpath" value="//div[@id='div_fzhsxx1']/span[6]/input"></element>
+	<element id="1" name="科目修改面板-辅助核算自定义项选择按钮" method="xpath" value=".//*[@id='div_fzhsxx2']/span/span/a"></element>
+	<element id="1" name="科目修改面板-是否数量核算复选框" method="id" value="sfsz"></element>
+	<element id="1" name="科目修改面板-计量单位行" method="id" value="WhetherJLDW"></element>
+	<element id="1" name="修改科目面板-计量单位输入框" method="name" value="jldw"></element>
 	<element id="1" name="修改科目面板-是否外汇核算复选框" method="id" value="whhs"></element>
-	<element id="1" name="修改科目面板-外汇核算币种输入框" method="name" value="whhsmc"></element>
-	<element id="1" name="修改科目面板-外汇核算币种选择按钮" method="xpath" value="//a[parent::*[following-sibling::input[@name='whhsmc']]]"></element>
-	
-	<element id="1" name="修改科目面板-是否数量核算输入框" method="name" value="sfsz"></element>
+	<element id="1" name="科目修改面板-外汇核算行" method="id" value="tr_currency"></element>
+	<element id="1" name="修改科目面板-外汇核算币种选择按钮" method="xpath" value=".//*[@id='tr_currency']/td/span/span/a"></element>
+	<element id="1" name="科目修改面板-外汇币种窗口全选按钮" method="xpath" value=".//*[@id='whhsRefDlg']/div/div/div/div[2]/div[1]/div/table/tbody/tr/td[1]/div/input"></element>
+	<element id="1" name="修改科目面板-外汇币种选择确认按钮" method="xpath" value="html/body/div[9]/div[3]/a[1]"></element>
+	<element id="1" name="修改科目面板-新增保存按钮" method="xpath" value=".//*[@id='dlg-Addbuttons']/a[1]"></element>
+	<element id="1" name="科目修改面板-新增取消按钮" method="xpath" value=".//*[@id='dlg-Addbuttons']/a[2]"></element>
 	<element id="1" name="修改科目面板-保存按钮" method="xpath" value=".//*[@id='dlg-Modifybuttons']/a[1]"></element>
 	<element id="1" name="修改科目面板-取消按钮" method="xpath" value=".//*[@id='dlg-Modifybuttons']/a[2]"></element>
 	
-	<element id="1" name="" method="xpath" value=""></element>
-	<element id="1" name="" method="xpath" value=""></element>
+	<element id="1" name="询问删除对话框" method="xpath" value="html/body/div[12]/div[2]"></element>
+	<element id="1" name="删除确认" method="xpath" value="html/body/div[12]/div[2]/div[4]/a[1]"></element>
 	<element id="1" name="" method="xpath" value=""></element>
 	<element id="1" name="" method="xpath" value=""></element>
 	<element id="1" name="" method="xpath" value=""></element>
