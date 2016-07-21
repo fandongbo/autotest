@@ -257,7 +257,7 @@ public class AccountingMainPage extends Handler {
 		return result;
 	}
 
-	@Deprecated
+	//@Deprecated
 	public boolean open会计科目() throws MyException, InterruptedException {
 		boolean result = false;
 		try {
