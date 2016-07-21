@@ -1,6 +1,8 @@
 package com.dzf.test.page.accounting.基础设置_总账;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Reporter;
@@ -10,6 +12,7 @@ import com.dzf.test.model.Page;
 import com.dzf.test.util.MyException;
 import com.dzf.test.util.WebTableUtil;
 import com.dzf.test.util.XMLUtil;
+import com.sun.jna.platform.win32.OaIdl.EXCEPINFO;
 
 public class 会计科目Page extends Handler {
 
@@ -19,9 +22,258 @@ public class 会计科目Page extends Handler {
 		super();
 		page = XMLUtil.convert(xmlfile, Page.class);
 	}
+	
+	public boolean add(String parentCode, String kmmc, String isfzhs, String kehu, String gonggyingshang,
+			String zhiyuan, String xiangmu, String bumen, String cunhuo, String zidingyifzhsx, String isnum,
+			String jldw, String iswhhs,String bizhong)throws MyException, InterruptedException{
+		try {
+			switchToDefaultContent();
+			switchToFrame(getWebElement("会计科目iframe"));
+			//选择父科目行并点击选中
+			click(getSubjectTr(parentCode));
+			// 点击增加按钮
+			click("增加按钮");
+			input("科目修改面板-科目名称输入框", kmmc);
+			if("是".equals(isfzhs)){
+				click("科目修改面板-是否辅助核算复选框");
+			}
+			if("是".equals(isfzhs) && isDisplayed("科目修改面板-辅助核算项")){
+				if("是".equals(kehu)){
+					click("科目修改面板-辅助核算项-客户");
+				}
+				if("是".equals(gonggyingshang)){
+					click("科目修改面板-辅助核算项-供应商");
+				}
+				if("是".equals(zhiyuan)){
+					click("科目修改面板-辅助核算项-职员");
+				}
+				if("是".equals(xiangmu)){
+					click("科目修改面板-辅助核算项-项目");
+				}
+				if("是".equals(bumen)){
+					click("科目修改面板-辅助核算项-部门");
+				}
+				if("是".equals(cunhuo)){
+					click("科目修改面板-辅助核算项-存货");
+				}
+				if(zidingyifzhsx != null && !"".equals(zidingyifzhsx)){
+					click("科目修改面板-辅助核算自定义项选择按钮");
+					click(getWebElement(By.xpath("//div[text()='" + zidingyifzhsx + "']")));
+				}
+			}
+			if("是".equals(isnum)){
+				click("科目修改面板-是否数量核算复选框");
+			}
+			if("是".equals(isnum) && isDisplayed("科目修改面板-计量单位行")){
+				input("修改科目面板-计量单位输入框", jldw);
+			}
+			if("是".equals(iswhhs)){
+				click("修改科目面板-是否外汇核算复选框");
+			}
+			if("是".equals(iswhhs) && isDisplayed("科目修改面板-外汇核算行")){
+				click("修改科目面板-外汇核算币种选择按钮");
+				String[] bz = bizhong.split(",");
+				for(int i = 0; i < bz.length; i++){
+					String ele = bz[i].trim();
+					click(getWebElement(By.xpath("//div[@id='whhsRefDlg']/div/div/div/div[2]/div[2]/table/tbody//td[@field='name']//div[text()='" + ele + "']")));
+				}
+				click("修改科目面板-外汇币种选择确认按钮");
+			}
+			click("修改科目面板-新增保存按钮");
+			return true;
+		} catch (MyException e) {
+			Reporter.log("增加科目失败");
+			throw e;
+		}
+	}
+	
+	public boolean modify(String code, String kmmc, String isfzhs, String kehu, String gonggyingshang,
+			String zhiyuan, String xiangmu, String bumen, String cunhuo, String zidingyifzhsx, String isnum,
+			String jldw, String iswhhs,String bizhong) throws MyException, InterruptedException{
+		try {
+			switchToDefaultContent();
+			switchToFrame(getWebElement("会计科目iframe"));
+			//选择父科目行并点击选中
+			click(getSubjectTr(code));
+			click("修改按钮");
+			if(code != null && !"".equals(code)){
+				input("科目修改面板-科目名称输入框", kmmc);
+			}
+			if("是".equals(isfzhs) && !isSelected("科目修改面板-是否辅助核算复选框")){
+				click("科目修改面板-是否辅助核算复选框");
+				if("是".equals(kehu)){
+					click("科目修改面板-辅助核算项-客户");
+				}
+				if("是".equals(gonggyingshang)){
+					click("科目修改面板-辅助核算项-供应商");
+				}
+				if("是".equals(zhiyuan)){
+					click("科目修改面板-辅助核算项-职员");
+				}
+				if("是".equals(xiangmu)){
+					click("科目修改面板-辅助核算项-项目");
+				}
+				if("是".equals(bumen)){
+					click("科目修改面板-辅助核算项-部门");
+				}
+				if("是".equals(cunhuo)){
+					click("科目修改面板-辅助核算项-存货");
+				}
+				if(zidingyifzhsx != null && "".equals(zidingyifzhsx)){
+					click("科目修改面板-辅助核算自定义项选择按钮");
+					click(getWebElement(By.xpath("//div[@class='panel combo-p']/div/div[text()='" + zidingyifzhsx + "']")));
+				}
+			}
+			if("是".equals(isfzhs) && isSelected("科目修改面板-是否辅助核算复选框")){
+				//清除原辅助核算项
+				if(isSelected("科目修改面板-辅助核算项-客户")){
+					click("科目修改面板-辅助核算项-客户");
+				}
+				if(isSelected("科目修改面板-辅助核算项-供应商")){
+					click("科目修改面板-辅助核算项-供应商");
+				}
+				if(isSelected("科目修改面板-辅助核算项-职员")){
+					click("科目修改面板-辅助核算项-职员");
+				}
+				if(isSelected("科目修改面板-辅助核算项-项目")){
+					click("科目修改面板-辅助核算项-项目");
+				}
+				if(isSelected("科目修改面板-辅助核算项-部门")){
+					click("科目修改面板-辅助核算项-部门");
+				}
+				if(isSelected("科目修改面板-辅助核算项-存货")){
+					click("科目修改面板-辅助核算项-存货");
+				}
+				//重新选择辅助核算项
+				if("是".equals(kehu)){
+					click("科目修改面板-辅助核算项-客户");
+				}
+				if("是".equals(gonggyingshang)){
+					click("科目修改面板-辅助核算项-供应商");
+				}
+				if("是".equals(zhiyuan)){
+					click("科目修改面板-辅助核算项-职员");
+				}
+				if("是".equals(xiangmu)){
+					click("科目修改面板-辅助核算项-项目");
+				}
+				if("是".equals(bumen)){
+					click("科目修改面板-辅助核算项-部门");
+				}
+				if("是".equals(cunhuo)){
+					click("科目修改面板-辅助核算项-存货");
+				}
+				if(zidingyifzhsx != null && !"".equals(zidingyifzhsx)){
+					click("科目修改面板-辅助核算自定义项选择按钮");
+					click(getWebElement(By.xpath("//div[@class='panel combo-p']/div/div[text()='" + zidingyifzhsx + "']")));
+				}
+			}
+			if(("否".equals(isfzhs) || "".equals(isfzhs) || isfzhs == null) && isSelected("科目修改面板-是否辅助核算复选框")){
+				click("科目修改面板-是否辅助核算复选框");
+			}
+			if("是".equals(isnum) && !isSelected("科目修改面板-是否数量核算复选框")){
+				click("科目修改面板-是否数量核算复选框");
+				if(isDisplayed("科目修改面板-计量单位行")){
+					input("修改科目面板-计量单位输入框", jldw);
+				}
+			}
+			if(("否".equals(isnum) || "".equals(isnum) || isnum == null) && isSelected("科目修改面板-是否数量核算复选框")){
+				click("科目修改面板-是否数量核算复选框");
+			}
+			if("是".equals(iswhhs) && !isSelected("修改科目面板-是否外汇核算复选框")){
+				click("修改科目面板-是否外汇核算复选框");
+				click("修改科目面板-外汇核算币种选择按钮");
+				String[] bz = bizhong.split(",");
+				for(int i = 0; i < bz.length; i++){
+					String ele = bz[i].trim();
+					click(getWebElement(By.xpath("//div[@id='whhsRefDlg']/div/div/div/div[2]/div[2]/table/tbody//td[@field='name']//div[text()='" + ele + "']")));
+				}
+				click("修改科目面板-外汇币种选择确认按钮");
+			}
+			if("是".equals(iswhhs) && isSelected("修改科目面板-是否外汇核算复选框")){
+				click("修改科目面板-外汇核算币种选择按钮");
+				//清除原币种
+				click("科目修改面板-外汇币种窗口全选按钮");
+				click("科目修改面板-外汇币种窗口全选按钮");
+				//重新选择币种
+				String[] bz = bizhong.split(",");
+				for(int i = 0; i < bz.length; i++){
+					String ele = bz[i].trim();
+					click(getWebElement(By.xpath("//div[@id='whhsRefDlg']/div/div/div/div[2]/div[2]/table/tbody//td[@field='name']//div[text()='" + ele + "']")));
+				}
+				click("修改科目面板-外汇币种选择确认按钮");
+			}
+			if(("否".equals(iswhhs) || "".equals(iswhhs) || iswhhs ==null) && isSelected("修改科目面板-是否外汇核算复选框")){
+				click("修改科目面板-是否外汇核算复选框");
+			}
+			click("修改科目面板-保存按钮");
+			return true;
+		} catch (MyException e) {
+			Reporter.log("修改科目失败");
+			throw e;
+		}
+	}
 
-	public boolean add(/* 上级科目编码 */String parentSubjectCode, /* 科目编码 */String subjectCode,
-			/* 科目名称 */ String subjectName, String 是否数量核算, String 计量单位, String 是否外汇核算, /* 币种名称 */String currency)
+	public boolean delete(String kmcode) throws MyException, InterruptedException{
+		try {
+			switchToDefaultContent();
+			switchToFrame(getWebElement("会计科目iframe"));
+			//选择父科目行并点击选中
+			click(getSubjectTr(kmcode));
+			click("删除按钮");
+			if(isDisplayed("询问删除对话框")){
+				click("删除确认");
+			}else{
+				throw new MyException("数据或规则限制，删除该科目失败。");
+			}
+			return true;
+		} catch (MyException e) {
+			Reporter.log("删除科目失败");
+			throw e;
+		}
+	}
+	
+	public boolean refresh() throws MyException, InterruptedException{
+		try {
+			switchToDefaultContent();
+			switchToFrame(getWebElement("会计科目iframe"));
+			click("刷新按钮");
+			return true;
+		} catch (MyException e) {
+			Reporter.log("刷新失败");
+			throw e;
+		}
+	}
+	
+	public boolean fengcun(String kmcode) throws MyException, InterruptedException{
+		try {
+			switchToDefaultContent();
+			switchToFrame(getWebElement("会计科目iframe"));
+			click(getSubjectTr(kmcode));
+			click("封存按钮");
+			return true;
+		} catch (MyException e) {
+			Reporter.log("封存科目失败");
+			throw e;
+		}
+	}
+	
+	public boolean quxiaofengcun(String kmcode) throws MyException, InterruptedException{
+		try {
+			switchToDefaultContent();
+			switchToFrame(getWebElement("会计科目iframe"));
+			click(getSubjectTr(kmcode));
+			click("取消封存按钮");
+			return true;
+		} catch (MyException e) {
+			Reporter.log("取消封存科目失败");
+			throw e;
+		}
+	}
+	
+	//前期使用
+	public boolean add( /*上级科目编码*/ String parentSubjectCode,  /*科目编码*/ String subjectCode,
+			 /*科目名称*/  String subjectName, String 是否数量核算, String 计量单位, String 是否外汇核算,  /*币种名称*/ String currency)
 					throws InterruptedException, MyException {
 		try {
 			switchToDefaultContent();
@@ -42,8 +294,9 @@ public class 会计科目Page extends Handler {
 		}
 	}
 
-	public boolean modify(/* 原科目编码 */String originSubjectCode, /* 新科目编码 */String subjectCode,
-			/* 科目名称 */ String subjectName, String 是否数量核算, String 计量单位, String 是否外汇核算, /* 币种名称 */String currency)
+	//前期使用
+	public boolean modify( /*原科目编码*/ String originSubjectCode, /* 新科目编码*/ String subjectCode,
+			 /*科目名称*/  String subjectName, String 是否数量核算, String 计量单位, String 是否外汇核算,  /*币种名称*/ String currency)
 					throws InterruptedException, MyException {
 
 		try {
@@ -68,7 +321,7 @@ public class 会计科目Page extends Handler {
 	/*
 	 * 参数：会计科目、币别 功能：只修改会计科目的币别
 	 */
-	public boolean modify(/* 科目编码 */String subjectCode, String currency) throws InterruptedException, MyException {
+	public boolean modify( /*科目编码*/ String subjectCode, String currency) throws InterruptedException, MyException {
 		return modify(subjectCode, null, null, null, null, "是", currency);
 	}
 
@@ -147,11 +400,7 @@ public class 会计科目Page extends Handler {
 
 			Thread.sleep(800);
 
-			try {
-				webElement = new WebTableUtil(getWebElement(table)).getTr(subjectCode);
-			} catch (MyException e) {
-
-			}
+			webElement = new WebTableUtil(getWebElement(table)).getTr(subjectCode);
 			if (webElement != null) {
 				return webElement;
 			}
