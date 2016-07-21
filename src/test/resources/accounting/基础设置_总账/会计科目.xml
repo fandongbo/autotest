@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="会计科目测试" preserve-order="false" allow-return-values="true">
+	<packages>
+		<package name="com.dzf.test.*"></package>
+	</packages>
+	<test name="会计科目" enabled="true" preserve-order="true">
+		<parameter name="用户名" value="dxm2525"></parameter>
+		<parameter name="密码" value="123qwe!@#"></parameter>
+		<parameter name="公司名称" value="张三8321"></parameter>
+
+		<classes>
+			<class name="com.dzf.test.testcase.SuiteConfig"></class>
+			<class name="com.dzf.test.testcase.accounting.基础设置_总账.会计科目PageTest">
+				<methods>
+					<include name="login"></include>
+					<!-- 增加科目用例 -->
+					<include name="addKm">
+						<parameter name="父科目编码" value="1901"></parameter>
+						<parameter name="科目名称" value="测试自动化增加"></parameter>
+						<parameter name="是否辅助核算" value="是"></parameter>
+						<parameter name="辅助项-客户" value="是"></parameter>
+						<parameter name="辅助项-供应商" value=""></parameter>
+						<parameter name="辅助项-职员" value=""></parameter>
+						<parameter name="辅助项-项目" value=""></parameter>
+						<parameter name="辅助项-部门" value=""></parameter>
+						<parameter name="辅助项-存货" value=""></parameter>
+						<parameter name="辅助项-自定义" value="自定义2"></parameter>
+						<parameter name="是否数量核算" value="是"></parameter>
+						<parameter name="计量单位" value="件"></parameter>
+						<parameter name="是否外汇核算" value="是"></parameter>
+						<!-- 多个币种用英文逗号隔开 -->
+						<parameter name="币种" value="欧元,美元"></parameter>
+					</include>
+					<!-- 修改科目用例 -->
+					<include name="modifyKm">
+						<parameter name="科目编码" value="190110"></parameter>
+						<parameter name="科目名称" value="测试自动化修改"></parameter>
+						<parameter name="是否辅助核算" value="是"></parameter>
+						<parameter name="辅助项-客户" value=""></parameter>
+						<parameter name="辅助项-供应商" value="是"></parameter>
+						<parameter name="辅助项-职员" value=""></parameter>
+						<parameter name="辅助项-项目" value=""></parameter>
+						<parameter name="辅助项-部门" value=""></parameter>
+						<parameter name="辅助项-存货" value=""></parameter>
+						<parameter name="辅助项-自定义" value="自定义1"></parameter>
+						<parameter name="是否数量核算" value=""></parameter>
+						<parameter name="计量单位" value=""></parameter>
+						<parameter name="是否外汇核算" value="是"></parameter>
+						<!-- 多个币种用英文逗号隔开 -->
+						<parameter name="币种" value="新台币,新加坡币"></parameter>
+					</include>
+					<!-- 删除科目用例 -->
+					<include name="delete">
+						<parameter name="科目编码" value="190110"></parameter>
+					</include>
+					<!-- 刷新 -->
+					<include name="refresh"></include>
+					<!-- 封存 -->
+					<include name="fengcun">
+						<parameter name="科目编码" value="190110"></parameter>
+					</include>
+					<!-- 取消封存 -->
+					<include name="quxiaofengcun">
+						<parameter name="科目编码" value="190110"></parameter>
+					</include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<listeners>
+		<!-- reportNg Listener -->
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<!-- arrow Listener -->
+		<listener class-name="com.netease.qa.testng.TestResultListener" />
+		<listener class-name="com.netease.qa.testng.RetryListener" />
+		<listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
+		<!-- self Listener -->
+		<listener class-name="com.dzf.test.util.testng.ScreenShotListener" />
+	</listeners>
+</suite>
