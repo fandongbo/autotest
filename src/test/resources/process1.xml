@@ -7,9 +7,12 @@
 	</packages>
 
 	<test name="scenery1" enabled="false" preserve-order="true">
-		<parameter name="用户名" value="dwk666"></parameter>
+		<parameter name="用户名" value="dxm2525"></parameter>
+		<parameter name="密码" value="123qwe!@#"></parameter>
+		<parameter name="公司名称" value="张三8321"></parameter> 
+		<!-- <parameter name="用户名" value="dwk666"></parameter>
 		<parameter name="密码" value="dwk666!!"></parameter>
-		<parameter name="公司名称" value="13小企业建账直接结转"></parameter>
+		<parameter name="公司名称" value="13小企业建账直接结转"></parameter> -->
 
 		<classes>
 			<class name="com.dzf.test.testcase.SuiteConfig"></class>
@@ -18,12 +21,12 @@
 					<include name="login"></include>
 	
 					<include name="test期初试算平衡">
-						<parameter name="科目一" value="1001_库存现金"></parameter>
+						<parameter name="科目一" value="1200_往来款"></parameter>
 						<parameter name="币别一" value="人民币"></parameter>
 						<parameter name="修改项一" value="本年期初金额"></parameter>
 						<parameter name="金额一" value="10000"></parameter>
 
-						<parameter name="科目二" value="2001_短期借款"></parameter>
+						<parameter name="科目二" value="1131_应收股利"></parameter>
 						<parameter name="币别二" value="人民币"></parameter>
 						<parameter name="修改项二" value="本年期初金额"></parameter>
 						<parameter name="金额二" value="10000"></parameter>
@@ -32,25 +35,39 @@
 					<include name="test期初试算平衡其它按钮"></include>
 
 					<include name="test填制凭证">
-						<parameter name="摘要" value="测试摘要"></parameter>
-						<parameter name="科目一" value="库存现金"></parameter>
-						<parameter name="金额" value="100"></parameter>
-						<parameter name="科目二" value="银行存款"></parameter>
+						<parameter name="摘要一" value="测试摘要"></parameter>
+						<parameter name="科目一" value="1200"></parameter>
+						<parameter name="金额一" value="100"></parameter>
+						<parameter name="摘要二" value="测试摘要"></parameter>
+						<parameter name="科目二" value="1131"></parameter>
+						<parameter name="金额二" value="100"></parameter>
+						<parameter name="数量" value=""></parameter>
+						<parameter name="单价" value=""></parameter>
+						<parameter name="汇率" value=""></parameter>
+						<parameter name="原币" value=""></parameter>
 					</include>
 
-					<include name="test填制凭证其它功能">
+					<!-- <include name="test填制凭证其它功能">
 						<parameter name="摘要" value="测试摘要"></parameter>
 						<parameter name="科目一" value="库存现金"></parameter>
 						<parameter name="金额" value="100"></parameter>
 						<parameter name="科目二" value="银行存款"></parameter>
 						<parameter name="原始日期" value="2016-04"></parameter>
 						<parameter name="目标日期" value="2016-05"></parameter>
-					</include>
+					</include> -->
 
 					<include name="test凭证管理">
-						<parameter name="查询方式" value="期间"></parameter>
-						<parameter name="开始日期" value="2016-04"></parameter>
-						<parameter name="结束日期" value="2016-12"></parameter>
+						<parameter name="查询方式" value="日期"></parameter>
+						<parameter name="开始年月" value="2016-07-01"></parameter>
+						<parameter name="结束年月" value="2016-07-31"></parameter>
+						<parameter name="开始凭证号" value=""></parameter>
+						<parameter name="结束凭证号" value=""></parameter>
+						<parameter name="状态" value=""></parameter>
+						<parameter name="科目" value=""></parameter>
+						<parameter name="摘要" value=""></parameter>
+						<parameter name="最小金额" value=""></parameter>
+						<parameter name="最大金额" value=""></parameter>
+						<parameter name="公司" value=""></parameter>
 					</include>
 
 					<include name="test期末处理">
@@ -82,10 +99,13 @@
 		</classes>
 	</test>
 
-	<test name="scenery2" enabled="false" preserve-order="true">
-		<parameter name="用户名" value="dwk666"></parameter>
+	<test name="scenery2" enabled="true" preserve-order="true">
+		<parameter name="用户名" value="dxm2525"></parameter>
+		<parameter name="密码" value="123qwe!@#"></parameter>
+		<parameter name="公司名称" value="张三8321"></parameter>
+		<!-- <parameter name="用户名" value="dwk666"></parameter>
 		<parameter name="密码" value="dwk666!!"></parameter>
-		<parameter name="公司名称" value="13小企业比例建账外币资产2"></parameter>
+		<parameter name="公司名称" value="13小企业比例建账外币资产2"></parameter> -->
 		<classes>
 			<class name="com.dzf.test.testcase.SuiteConfig"></class>
 			<class name="com.dzf.test.testscenery.TestScenery2">
@@ -102,29 +122,29 @@
 					</include>
 
 					<include name="test会计科目">
-						<parameter name="科目" value="其他货币资金"></parameter>
+						<parameter name="科目" value="车"></parameter>
 						<parameter name="币别" value="美元"></parameter>
 					</include>
 
 					<include name="test期初录入固定资产卡片">
-						<parameter name="录入期间" value="2016-05-04"></parameter>
+						<parameter name="录入期间" value="2016-07-19"></parameter>
 						<parameter name="资产编码" value=""></parameter>
 						<parameter name="资产名称" value="办公桌"></parameter>
 						<parameter name="资产类别" value="0103"></parameter>
-						<parameter name="开始使用日期" value="2016-03-31"></parameter>
+						<parameter name="开始使用日期" value="2015-12-01"></parameter>
 						<parameter name="折旧方式" value="平均年限法"></parameter>
 						<parameter name="预计使用年限" value="12"></parameter>
 						<parameter name="固定(无形)资产科目" value="160103_器具、工具、家具等"></parameter>
-						<parameter name="结算科目" value="1001_库存现金"></parameter>
+						<parameter name="结算科目" value="100101010101_123445111"></parameter>
 						<parameter name="折旧(摊销)科目" value="160203_器具、工具、家具等"></parameter>
 						<parameter name="折旧(摊销)费用科目" value="56010701_固定资产折旧"></parameter>
 						<parameter name="原值" value="2000"></parameter>
 						<parameter name="是否期初" value="true"></parameter>
 						<parameter name="期初信息备注" value=""></parameter>
-					</include>
+					</include> 
 
 					<include name="test期初试算平衡">
-						<parameter name="科目一" value="1012_其他货币资金"></parameter>
+						<parameter name="科目一" value="122101_车"></parameter>
 						<parameter name="币别一" value="美元"></parameter>
 						<parameter name="修改项一" value="原币本年期初"></parameter>
 						<parameter name="金额一" value="10000"></parameter>
@@ -138,11 +158,11 @@
 
 					<include name="test填制凭证">
 						<parameter name="摘要" value="测试摘要"></parameter>
-						<parameter name="科目一" value="其他货币资金"></parameter>
+						<parameter name="科目一" value="122101"></parameter>
 						<parameter name="汇率" value="6.5"></parameter>
 						<parameter name="原币" value="100"></parameter>
 						<parameter name="金额" value="650"></parameter>
-						<parameter name="科目二" value="银行存款"></parameter>
+						<parameter name="科目二" value="100201010102"></parameter>
 					</include>
 
 					<!-- <include name="test填制凭证其它功能"> -->
@@ -150,46 +170,46 @@
 					<!-- <parameter name="目标日期" value="2016-05"></parameter> -->
 					<!-- </include> -->
 
-					<include name="test期中录入固定资产卡片工作量法">
-						<parameter name="录入期间" value="2016-05-04"></parameter>
+					<!-- <include name="test期中录入固定资产卡片工作量法">
+						<parameter name="录入期间" value="2016-07-19"></parameter>
 						<parameter name="资产编码" value=""></parameter>
 						<parameter name="资产名称" value="办公桌"></parameter>
 						<parameter name="资产类别" value="0103"></parameter>
-						<parameter name="开始使用日期" value="2016-05-01"></parameter>
+						<parameter name="开始使用日期" value="2015-12-10"></parameter>
 						<parameter name="折旧方式" value="工作量法"></parameter>
 						<parameter name="预计使用年限" value="12"></parameter>
 						<parameter name="固定(无形)资产科目" value="160103_器具、工具、家具等"></parameter>
-						<parameter name="结算科目" value="1001_库存现金"></parameter>
+						<parameter name="结算科目" value="100101010101_123445111"></parameter>
 						<parameter name="折旧(摊销)科目" value="160203_器具、工具、家具等"></parameter>
 						<parameter name="折旧(摊销)费用科目" value="56010701_固定资产折旧"></parameter>
 						<parameter name="原值" value="2000"></parameter>
 						<parameter name="是否期初" value="false"></parameter>
 						<parameter name="期初信息备注" value=""></parameter>
-					</include>
+					</include> -->
 
 					<include name="test原值变更">
-						<parameter name="卡片编号" value="000001"></parameter>
-						<parameter name="变更日期" value="2016-05-23"></parameter>
+						<parameter name="卡片编号" value="000006"></parameter>
+						<parameter name="变更日期" value="2016-07-19"></parameter>
 						<parameter name="变更后原值" value="3000"></parameter>
 						<parameter name="开始日期" value="2016-01-01"></parameter>
-						<parameter name="结束日期" value="2016-05-23"></parameter>
-						<parameter name="卡片编码" value="000001"></parameter>
+						<parameter name="结束日期" value="2016-07-19"></parameter>
+						<parameter name="卡片编码" value="000006"></parameter>
 					</include>
-					<include name="test资产清理">
+					<!-- <include name="test资产清理">
 						<parameter name="开始日期" value="2016-01-01"></parameter>
 						<parameter name="结束日期" value="2016-12-31"></parameter>
-						<parameter name="资产编码" value="000003"></parameter>
+						<parameter name="资产编码" value="000008"></parameter>
 					</include>
 					<include name="test工作量管理">
 						<parameter name="查询期间" value="2016-06"></parameter>
 						<parameter name="资产编码" value="20160520151541788"></parameter>
 						<parameter name="本月工作量" value="10"></parameter>
-					</include>
+					</include> -->
 
 					<include name="test凭证管理">
 						<parameter name="查询方式" value="期间"></parameter>
-						<parameter name="开始日期" value="2016-04"></parameter>
-						<parameter name="结束日期" value="2016-04"></parameter>
+						<parameter name="开始日期" value="2016-07"></parameter>
+						<parameter name="结束日期" value="2016-07"></parameter>
 					</include>
 
 					<include name="test期末处理">
@@ -228,7 +248,7 @@
 	</test>
 
 	<!-- 修改会计科目，启用数量核算 -->
-	<test name="scenery3" enabled="true" preserve-order="true">
+	<test name="scenery3" enabled="false" preserve-order="true">
 		<parameter name="用户名" value="dxm2525"></parameter>
 		<parameter name="密码" value="123qwe!@#"></parameter>
 		<parameter name="公司名称" value="张三8321"></parameter> 
