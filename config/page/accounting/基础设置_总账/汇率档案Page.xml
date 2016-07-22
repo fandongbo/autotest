@@ -18,24 +18,24 @@
 		value=".//*[@id='fm']/table/tbody/tr[2]/td/span/input[1]"></element>
 	<element id="1" name="汇率折算模式选择按钮" method="xpath"
 		value=".//*[@id='fm']/table/tbody/tr[3]/td/span/span/a"></element>
-	<element id="1" name="折算模式一" method="xpath"
+	<element id="1" name="折算模式-乘" method="xpath"
 		value="html/body/div[2]/div/div[1]"></element>
-	<element id="1" name="折算模式二" method="xpath"
+	<element id="1" name="折算模式-除" method="xpath"
 		value="html/body/div[2]/div/div[2]"></element>
 	<element id="1" name="是否浮动汇率选择按钮" method="xpath"
 		value=".//*[@id='fm']/table/tbody/tr[4]/td/span/span/a"></element>
-	<element id="1" name="浮动汇率选项一" method="xpath"
+	<element id="1" name="浮动汇率选项-是" method="xpath"
 		value="html/body/div[3]/div/div[1]"></element>
-	<element id="1" name="浮动汇率选项二" method="xpath"
+	<element id="1" name="浮动汇率选项-否" method="xpath"
 		value="html/body/div[3]/div/div[2]"></element>
 	<element id="1" name="备注输入框" method="xpath"
 		value=".//*[@id='fm']/table/tbody/tr[5]/td/span/input[1]"></element>
 	<element id="1" name="增加汇率信息面板-保存按钮" method="xpath"
 		value=".//*[@id='dlg-buttons']/a[1]"></element>
 	<element id="1" name="修改按钮" method="xpath" value="//a[@onclick='editFun()']"></element>
-	<element id="1" name="" method="id" value="user_code"></element>
-	<element id="1" name="" method="id" value="user_code"></element>
-	<element id="1" name="" method="id" value="user_code"></element>
+	<element id="1" name="删除按钮" method="xpath" value="//a[@onclick='removeFun()']"></element>
+	<element id="1" name="删除提示对话框" method="xpath" value="//div[contains(.,'提示') and contains(.,'确定要删除此记录？')]"></element>
+	<element id="1" name="删除提示对话框-确定" method="xpath" value="//div[contains(.,'提示') and contains(.,'确定要删除此记录？')]/div[2]/div[4]/a[1]"></element>
 	<element id="1" name="" method="id" value="user_code"></element>
 	<element id="1" name="" method="id" value="user_code"></element>
 </page>
