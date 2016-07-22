@@ -293,7 +293,7 @@ public class AccountingMainPage extends Handler {
 		return result;
 	}
 
-	@Deprecated
+	//@Deprecated
 	public boolean open汇率档案() throws MyException, InterruptedException {
 		boolean result = false;
 		try {
